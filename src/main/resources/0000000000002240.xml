@@ -1,0 +1,42 @@
+<?xml version="1.0" standalone="yes"?>
+<OMSDataSet>
+  <DataFile>
+    <StartData>02/01/19 02:37:29 PM</StartData>
+    <StopData>02/01/19 03:46:29 PM</StopData>
+    <FormulaName>100mm 20m/min</FormulaName>
+    <FormulaName2 />
+    <LinearMeters>1336.38895</LinearMeters>
+  </DataFile>
+  <Consumption>
+    <ConsumptionC1>3558112</ConsumptionC1>
+    <ConsumptionC2>207.6352</ConsumptionC2>
+    <ConsumptionC3>1257571</ConsumptionC3>
+    <ConsumptionC4>102.0366</ConsumptionC4>
+    <ConsumptionC5>0</ConsumptionC5>
+    <ConsumptionC6>312321.3</ConsumptionC6>
+    <ConsumptionC7>0</ConsumptionC7>
+    <ConsumptionC8>0</ConsumptionC8>
+    <ConsumptionC9>0</ConsumptionC9>
+    <ConsumptionC10>13886.56</ConsumptionC10>
+    <ConsumptionC11>37887.37</ConsumptionC11>
+    <ConsumptionC12>0</ConsumptionC12>
+    <ConsumptionC13>69904.16</ConsumptionC13>
+    <ConsumptionC14>0</ConsumptionC14>
+    <ConsumptionC15>151445.8</ConsumptionC15>
+    <ConsumptionC16>0</ConsumptionC16>
+    <ConsumptionC17>0</ConsumptionC17>
+    <ConsumptionC18>0</ConsumptionC18>
+    <ConsumptionC19>0</ConsumptionC19>
+    <ConsumptionC20>12621.56</ConsumptionC20>
+    <ConsumptionC21>0</ConsumptionC21>
+    <ConsumptionC22>0</ConsumptionC22>
+    <ConsumptionC23>0</ConsumptionC23>
+    <ConsumptionC24>0</ConsumptionC24>
+    <ConsumptionC25>1192571</ConsumptionC25>
+    <ConsumptionC26>1190777</ConsumptionC26>
+    <ConsumptionC27>1192643</ConsumptionC27>
+    <ConsumptionC28>620930.8</ConsumptionC28>
+    <ConsumptionC29>620043.1</ConsumptionC29>
+    <ConsumptionC30>620983</ConsumptionC30>
+  </Consumption>
+</OMSDataSet>
