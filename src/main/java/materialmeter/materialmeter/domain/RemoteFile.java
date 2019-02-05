@@ -3,8 +3,8 @@ package materialmeter.materialmeter.domain;
 import jcifs.smb.NtlmPasswordAuthentication;
 import jcifs.smb.SmbException;
 import jcifs.smb.SmbFile;
-import jcifs.smb.SmbFileOutputStream;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.Data;
+import org.springframework.context.annotation.Bean;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -13,12 +13,13 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.*;
-import java.io.*;
+import javax.xml.xpath.XPathExpressionException;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Map;
+
 
 public class RemoteFile {
 
@@ -45,9 +46,11 @@ public class RemoteFile {
         return new SmbFile(path, auth).listFiles();
     }
 
-    public void getTag(Document document) throws XPathExpressionException {
+    public Map<String, String> getField() throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-        Node n = document.getFirstChild();
+
+        Map<String, String> map = null;
+        Node n = getFile().getFirstChild();
         NodeList nl = n.getChildNodes();
         Node an, an2;
 
@@ -59,18 +62,17 @@ public class RemoteFile {
                 for (int i2 = 1; i2 < nl2.getLength(); i2++) {
                     an2 = nl2.item(i2);
                     //Имя тега
+                    map.put(an2.getNodeName(), an2.getTextContent());
                     System.out.println(an2.getNodeName() + ": type (" + an2.getNodeType() + "):");
                     //Содержимое тега
                     System.out.println(an2.getTextContent());
                 }
             }
         }
-
+        return map;
     }
 
     public Document getFile() throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
-
-        String ConsumptionC1 = "";
         for (int i = 1; i < getSmbFiles().length; i++) {
             pathFile = String.valueOf(getSmbFiles()[getSmbFiles().length - i]);
             if (pathFile.endsWith("xml")) {
@@ -81,12 +83,12 @@ public class RemoteFile {
                         .newInstance();
                 documentBuilder = documentBuilderFactory.newDocumentBuilder();
                 document = documentBuilder.parse(is);
-
-                ConsumptionC1 = document.getElementsByTagName("ConsumptionC1").item(0).getTextContent();
-
-                String ConsumptionC2 = document.getElementsByTagName("ConsumptionC2").item(0).getTextContent();
-                System.out.println(ConsumptionC1);
-                getTag(document);
+//
+//               String ConsumptionC1 = document.getElementsByTagName("ConsumptionC1").item(0).getTextContent();
+//
+//                String ConsumptionC2 = document.getElementsByTagName("ConsumptionC2").item(0).getTextContent();
+//                System.out.println(ConsumptionC1);
+//                getField(document);
                 return document;
 
             }
