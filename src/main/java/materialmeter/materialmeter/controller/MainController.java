@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
 
 @Route("")
@@ -17,14 +18,13 @@ public class MainController extends VerticalLayout implements KeyNotifier {
 
     private final Text text = new Text("");
     private LocalFile localFile;
-private RemoteFile remoteFile;
+    private RemoteFile remoteFile;
+
     @Autowired
-    public MainController() throws IOException, SAXException, ParserConfigurationException {
+    public MainController() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException {
         localFile = new LocalFile();
         remoteFile = new RemoteFile();
-
-
         add(text);
-        text.setText(String.valueOf(remoteFile.getPath()));
+        text.setText(String.valueOf(remoteFile.getFile()));
     }
 }
